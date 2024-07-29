@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}meri webapp{% endblock title %}
+{% block content %}
+<h1 class="text-center">Welcome to my webpage</h1>
+<h2>{% if form.instance.pk %} Edit Tweet {% else %} Create tweet {% endif %}</h2>
+<form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning" type="submit">Submit</button>
+</form>
+<a href="{% url 'tweet_list' %}">Back to tweet list</a>
+{% endblock content %}
